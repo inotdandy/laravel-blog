@@ -21,6 +21,23 @@
   <!-- Custom styles for this template -->
   <link href="{{asset('frontend/css/clean-blog.min.css')}}" rel="stylesheet">
 
+  <style>
+    .category-list{
+      padding: 0;
+      margin: 0;
+    }
+    .category-list li{
+      list-style-type: none;
+    }
+    .category-title{
+      margin-top: 30px;
+      margin-bottom: 10px;
+    }
+    .post-category a{
+      text-decoration:none;
+    }
+  </style>
+
 </head>
 
 <body>
