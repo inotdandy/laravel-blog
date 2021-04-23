@@ -22,4 +22,14 @@ class WebsiteController extends Controller
 
         return view('frontend.pages.single-post', compact('post'));
     }
+
+    public function singleCategory(Category $category){
+
+        $category->where('is_published', 1)->first();
+        
+        $posts = $category->posts()->paginate(5);
+
+        
+        return view('frontend.pages.single-category', compact('category', 'posts'));
+    }
 }
