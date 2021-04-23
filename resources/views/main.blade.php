@@ -5,27 +5,33 @@
 <div class="container">
     <div class="row">
       <div class="col-lg-8 col-md-8 mx-auto">
+      @foreach($posts as $post)
         <div class="post-preview">
-          <a href="post.html">
+          <a href="{{ url('post/'.$post->slug)}}">
             <h2 class="post-title">
-              Man must explore, and this is exploration at its greatest
+              {{$post->title}}
             </h2>
             <h3 class="post-subtitle">
-              Problems look mighty small from 150 miles up
+              {{$post->sub_title}}
             </h3>
           </a>
           <p class="post-meta">Posted by
-            <a href="#">Start Bootstrap</a>
-            on September 24, 2019
-            <span class="post-category">
-              Category: <a href="">Laravel</a>
-            </span>  
+            <a href="#">{{$post->user->name}}</a>
+            on {{  date("F j, Y", strtotime($post->created_at))}}
+            @if($post->categories->count() > 0)
+              @foreach($post->categories as $category)
+                <span class="post-category">
+                  Category: <a href="{{ url('category/'.$category->slug) }}">{{ $category->name }}</a>
+                </span>
+              @endforeach
+            @endif  
           </p>
         </div>
         <hr>
+      @endforeach
         <!-- Pager -->
-        <div class="clearfix">
-          <a class="btn btn-primary float-right" href="#">Older Posts &rarr;</a>
+        <div class="clearfix mt-4">
+          {{$posts->links()}}
         </div>
       
       
@@ -34,7 +40,9 @@
         <div class="categeory">
           <h2 class="category-title">Category</h2>
           <ul class="category-list">
-            <li><a href="">Laravel</a></li>
+            @foreach($categories as $category)
+              <li><a href="{{ url('category/'.$category->slug) }}">{{ $category->name }}</a></li>
+            @endforeach
           </ul>
         </div>
       </div>
