@@ -27,7 +27,7 @@ class WebsiteController extends Controller
 
         $category->where('is_published', 1)->first();
         
-        $posts = $category->posts()->paginate(5);
+        $posts = $category->posts()->where('is_published', 1)->latest()->paginate(5);
 
         
         return view('frontend.pages.single-category', compact('category', 'posts'));
