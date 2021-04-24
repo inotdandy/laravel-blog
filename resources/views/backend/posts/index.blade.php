@@ -25,8 +25,8 @@
         <div class="col-md-12">
             <div class="card mb-4">
                 <div class="card-header">
-                    {{ __('Categories - List') }}
-                    <a href="{{ route('categories.create') }}" class="btn-primary btn-sm float-right">Add new</a>    
+                    {{ __('Posts - List') }}
+                    <a href="{{ route('posts.create') }}" class="btn-primary btn-sm float-right">Add new</a>    
                 </div>
 
                 <div class="card-body">
@@ -34,21 +34,21 @@
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Name</th>
+                                <th>Title</th>
                                 <th>Created by</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
 
                         <tbody>
-                            @foreach($categories as $category)
+                            @foreach($posts as $post)
                                 <tr>
-                                    <td>{{ $category->id }}</td>
-                                    <td>{{ $category->name }}</td>
-                                    <td>{{ $category->user->name }}</td>
+                                    <td>{{ $post->id }}</td>
+                                    <td>{{ $post->title }}</td>
+                                    <td>{{ $post->user->name }}</td>
                                     <td class="d-flex justify-content-center">
-                                        <a href="{{ route('categories.edit', $category) }}" class="btn btn-sm btn-primary mr-3">Edit</a>
-                                        <form action="{{ route('categories.destroy', $category) }}" method="post">
+                                        <a href="{{ route('posts.edit', $post) }}" class="btn btn-sm btn-primary mr-3">Edit</a>
+                                        <form action="{{ route('posts.destroy', $post) }}" method="post">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn-sm btn-danger">Delete</button>
