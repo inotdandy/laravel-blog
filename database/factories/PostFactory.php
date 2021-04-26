@@ -26,6 +26,7 @@ class PostFactory extends Factory
         return [
             'user_id' => User::all()->random()->id,
             'title' => $name = $this->faker->sentence,
+            'sub_title' => $this->faker->sentence,
             'slug' => Str::slug($name),
             'details' => $this->faker->paragraph,
             'is_published' => rand(0,1),

@@ -61,11 +61,13 @@
             <a href="#">{{$post->user->name}}</a>
             on {{  date("F j, Y", strtotime($post->created_at))}}
             @if($post->categories->count() > 0)
-              @foreach($post->categories as $category)
-                <span class="post-category">
-                  Category: <a href="{{ route('category', $category) }}">{{ $category->name }}</a>
+              <span class="post-category">
+                  Category: 
+                    @foreach($post->categories as $category)
+                      <a href="{{ route('category', $category) }}">{{ $category->name }}
+                      </a>
+                    @endforeach
                 </span>
-              @endforeach
             @endif  
           </p>
         </div>

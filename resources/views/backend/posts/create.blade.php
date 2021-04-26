@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@push('styles')
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+@endpush
+
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -42,14 +46,20 @@
 
                         <div class="form-group">
                             <label for="details">Details</label>
-                            <textarea name="details" id="details" class="form-control"></textarea>
+                            <textarea name="details" id="details" class="form-control @error('details') is-invalid @enderror"></textarea>
+
+                            @error('details')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                            @enderror
                         </div>
 
                         <div class="form-group">
                             <label for="categories">Categories</label>
-                            <select name="categories" id="categories">
-                                @foreach($categories as $category)
-                                    <option value="{{$category->id}}">{{$category->name}}</option>
+                            <select name="categories[]" id="categories" class="form-control" multiple="multiple">
+                                @foreach($categories as $key => $value)
+                                    <option value="{{$value}}">{{$key}}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -80,3 +90,16 @@
     </div>
 </div>
 @endsection
+
+@push('scripts')
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script src="https://cdn.ckeditor.com/4.16.0/standard/ckeditor.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            CKEDITOR.replace('details');
+            $('#categories').select2();
+        });
+    </script>
+@endpush

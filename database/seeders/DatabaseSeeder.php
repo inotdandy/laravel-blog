@@ -16,17 +16,17 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        //\App\Models\User::factory(10)->create();
 
-        // for($i=0; $i<20; $i++){
+        for($i=0; $i<20; $i++){
 
-        //     DB::table('category_post')->insert(
-        //         [
-        //             'post_id' => Post::all()->random()->id,
-        //             'category_id' => Category::all()->random()->id
-        //         ]
-        //     );
-        // }
+            DB::table('category_post')->insert(
+                [
+                    'post_id' => Post::all()->random()->id,
+                    'category_id' => Category::all()->random()->id
+                ]
+            );
+        }
         
     }
 }
