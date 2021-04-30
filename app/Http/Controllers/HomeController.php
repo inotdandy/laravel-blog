@@ -26,8 +26,8 @@ class HomeController extends Controller
     public function index()
     {
         $categories = Category::latest()->limit(3)->get();
-        $posts = Post::latest()->limit(3)->get();
-        $pages = Post::latest()->limit(3)->get();
+        $posts = Post::latest()->limit(3)->where('post_type', 'post')->where('is_published', 1)->get();
+        $pages = Post::latest()->limit(3)->where('post_type', 'page')->where('is_published', 1)->get();
         
         return view('backend.index', compact('categories', 'posts', 'pages'));
     }

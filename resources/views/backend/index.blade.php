@@ -71,11 +71,13 @@
                         </thead>
 
                         <tbody>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
+                            @foreach($pages as $page)
+                                <tr>
+                                    <td>{{ $page->id }}</td>
+                                    <td>{{ $page->title }}</td>
+                                    <td>{{ $page->user->name }}</td>
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

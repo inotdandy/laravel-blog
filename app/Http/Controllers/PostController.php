@@ -49,6 +49,7 @@ class PostController extends Controller
         $post->details = $request->details;
         $post->user_id = Auth::user()->id;
         $post->slug = Str::slug($request->title);
+        $post->post_type ='post';
         $post->save();
 
         $post->categories()->sync($request->categories);

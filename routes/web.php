@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PageController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\WebsiteController;
@@ -36,6 +37,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
         'categories' => CategoryController::class,
         'posts' => PostController::class,
         'galleries' => GalleryController::class,
+        'pages' => PageController::class,
     ]);
 });
 Auth::routes();
