@@ -27,7 +27,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/', [WebsiteController::class, 'index'])->name('index');
 Route::get('/category/{category}', [WebsiteController::class, 'singleCategory'])->name('category');
 Route::get('/post/{post}',[WebsiteController::class, 'singlePost'])->name('post');
-Route::get('/page/{page}', [WebsiteController::class, 'page'])->name('page');
+Route::get('/page/{page}', [WebsiteController::class, 'showPage'])->name('page');
 Route::get('/contact/create', [WebsiteController::class, 'createContact'])->name('contact.create');
 Route::post('/contact', [WebsiteController::class, 'storeContact'])->name('contact.store');
 

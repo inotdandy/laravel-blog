@@ -32,4 +32,11 @@ class WebsiteController extends Controller
         
         return view('frontend.pages.single-category', compact('category', 'posts'));
     }
+
+    public function showPage($slug){
+
+        $page = Post::where('slug', $slug)->where('post_type', 'page')->firstOrFail();
+
+        return view('frontend.pages.single-page', compact('page'));
+    }
 }
