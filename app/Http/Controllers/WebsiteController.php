@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Mail\SendEmail;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class WebsiteController extends Controller
 {
@@ -38,5 +40,22 @@ class WebsiteController extends Controller
         $page = Post::where('slug', $slug)->where('post_type', 'page')->firstOrFail();
 
         return view('frontend.pages.single-page', compact('page'));
+    }
+
+    public function createContact(){
+
+        return view('frontend.pages.contact');
+    }
+
+    public function storeContact(Request $request){
+
+       $data = $request->all();
+
+       Mail::to('dandy@test.com')->send(new SendEmail($data));
+
+       session()->flash('message', 'Your message has been sent');
+
+       return redirect()->back();
+     
     }
 }

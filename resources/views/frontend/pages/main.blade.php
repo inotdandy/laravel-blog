@@ -19,7 +19,7 @@
             </li>
           @endforeach
           <li class="nav-item">
-            <a class="nav-link" href="contact.html">Contact</a>
+            <a class="nav-link" href="{{ route('contact.create') }}">Contact</a>
           </li>
         </ul>
       </div>
